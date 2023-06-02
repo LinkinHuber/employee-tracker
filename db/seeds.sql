@@ -1,10 +1,12 @@
-INSERT INTO department (department_name)
+-- inserts the 3 departments into the departments table.
+INSERT INTO departments (department_name)
   VALUES 
     ("Floor"),
     ("Kitchen"),
     ("Cleanup");
 
-INSERT INTO role (role_title, department_id, role_salary)
+-- inserts the roles, department ids, and salaries into the roles table.
+INSERT INTO roles (role_title, department_id, role_salary)
   VALUES
     ("Waiter", 1, 25000 ),
     ("Floor Overseer", 1, 40000 ),
@@ -13,13 +15,15 @@ INSERT INTO role (role_title, department_id, role_salary)
     ("Busser", 3, 20000 ),
     ("Sanitation Advisor", 3, 35000 );
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+-- inserts all the managers first names, last names, role ids, and manager ids into the employees table.
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
   VALUES
     ("Lennon", "Allen", 2, null ), 
     ("Jayden", "Sloan", 4, null ),
     ("Kamal", "Rhodes", 6, null );
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+-- inserts all the employees first names, last names, role ids, and manager ids for who they work under into the employees table.
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
   VALUES
     ("Travis", "Hodge", 1, 1 ),
     ("Darragh", "Hardin", 1, 1 ), 
