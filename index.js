@@ -49,3 +49,26 @@ function init() {
 }
 
 init();
+
+function allDepartments() {
+  db.query("SELECT * FROM departments", function (err, results) {
+    console.table(results);
+    init();
+  });
+  }
+  
+  
+  function allRoles() {
+  db.query("SELECT * FROM roles", function (err, results) {
+    console.table(results);
+    init();
+  });
+  }
+  
+  
+  function allEmployees() {
+  db.query("SELECT * FROM employees", function (err, results) {
+    console.table(results);
+    init();
+  });
+  }
