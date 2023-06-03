@@ -72,3 +72,53 @@ function allDepartments() {
     init();
   });
   }
+
+  
+
+function newDepartment() {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What do you want to name the new department?",
+      name: "newDepartment"
+    }
+  ])
+  .then((data) => {
+    db.query(`INSERT INTO departments (department_name) VALUES (?)`, [data.newDepartment], function (err, results) 
+    {
+      if (err) throw err;
+      console.table(results);
+      init();
+    })
+  })
+}
+
+
+
+function newRole() {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the new role?",
+      name: "whatRole"
+    },
+    {
+      type: "input",
+      message: "What salary do you want to give this role?",
+      name: "whatSalary"
+    },
+    {
+      type: "input",
+      message: "What department id does this new role belong under?",
+      name: "whatDepartmentId"
+    }
+  ])
+  .then((data) => {
+    db.query(`INSERT INTO roles (job_title, department_id, role_salary) VALUES (?, ?, ?)`, [data.newRole, data.newDepartment, data.newSalary], function (err, results) 
+    {
+      if (err) throw err;
+      console.table(results);
+      init();
+    })
+  })
+}
