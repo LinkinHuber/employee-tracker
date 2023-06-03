@@ -33,13 +33,14 @@
 - THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
 ## What was the goal of this project?
-- The goal of this project was to create an employee tracker application ran through the command line taking in user feedback using `node index.js`. It pulls from the data populating the tables in mysql which is then seen in the command line when running the application. You can then interact with the data and add to sections of it if you wish to do so. 
+- The goal of this project was to create an employee tracker application ran through the command line taking in user feedback using `node index`. It pulls from the data populating the tables in mysql which is then seen in the command line when running the application. You can then interact with the data and add to sections of it if you wish to do so. 
 
 ## Link to demo video
-- 
+- https://watch.screencastify.com/v/E70aEGE83Z1Arzc2qPUc
 
 ## Screenshot of webpage
-![Screenshot of home page]()
+![Screenshot of home page](./images/Screenshot%202023-06-03%20174148.png)
+![Screenshot of home page](./images/Screenshot%202023-06-03%20174235.png)
 
 ## Questions?
   - If you have any additional questions please feel free to reach out to me!
