@@ -1,3 +1,4 @@
+// all of the required packages for this project.
 const express = require("express");
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
@@ -10,6 +11,8 @@ const app = express();
 app.use(express.urlencoded({extended: false }));
 app.use(express.json());
 
+
+// connects to the database
 const db = mysql.createConnection(
   {
     user: process.env.DB_USER,
@@ -19,6 +22,8 @@ const db = mysql.createConnection(
   console.log("Welcome...")
 )
 
+
+// prompts the user asking them to choose a category they'd like to view and then depending on the category they pick that function is then called. 
 function init() {
   inquirer.prompt([
     {
@@ -50,6 +55,8 @@ function init() {
 
 init();
 
+
+// if the user selects departments that table is then loaded for the user to see.
 function allDepartments() {
   db.query("SELECT * FROM departments", function (err, results) {
     console.table(results);
@@ -58,23 +65,25 @@ function allDepartments() {
   }
   
   
-  function allRoles() {
-  db.query("SELECT * FROM roles", function (err, results) {
-    console.table(results);
-    init();
-  });
-  }
-  
-  
-  function allEmployees() {
-  db.query("SELECT * FROM employees", function (err, results) {
-    console.table(results);
-    init();
-  });
-  }
+// if the user selects roles that table is then loaded for the user to see.
+function allRoles() {
+db.query("SELECT * FROM roles", function (err, results) {
+  console.table(results);
+  init();
+});
+}
+
+
+// if the user selects employees that table is then loaded for the user to see.
+function allEmployees() {
+db.query("SELECT * FROM employees", function (err, results) {
+  console.table(results);
+  init();
+});
+}
 
   
-
+// if the user wants to create a new department a prompt is then presented asking what you want to name it and then that new department is inserted into the departments table.
 function newDepartment() {
   inquirer.prompt([
     {
@@ -94,7 +103,7 @@ function newDepartment() {
 }
 
 
-
+// if the user wishes to create a new role a series of prompts is then presented asking what you want to name it, what salary you want to give it,and what department id does the new role belong to. The data is then inserted into the roles table.
 function newRole() {
   inquirer.prompt([
     {
@@ -123,6 +132,8 @@ function newRole() {
   })
 }
 
+
+// if the user wants to add a new employee a series of prompts is then presented asking for their first name, last name, department id, and the role id of the manager they will be working under. This data is then inserted into the employees table.
 function newEmployee() {
   inquirer.prompt([
     {
@@ -157,6 +168,7 @@ function newEmployee() {
 }
 
 
+// lastly if the user wishes to edit an existing emplyee role a series of prompts is then asked asking what their role id is and what role you want to give then instead. The existing data is then updated in the employees table.
 function editEmployeeRole() {
   inquirer.prompt([
     {
