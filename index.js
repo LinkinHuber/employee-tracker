@@ -119,11 +119,11 @@ function newRole() {
     {
       type: "input",
       message: "What department id does this new role belong under?",
-      name: "whatDepartmentId"
+      name: "whatDepartment"
     }
   ])
   .then((data) => {
-    db.query(`INSERT INTO roles (job_title, department_id, role_salary) VALUES (?, ?, ?)`, [data.newRole, data.newDepartment, data.newSalary], function (err, results) 
+    db.query(`INSERT INTO roles (role_title, department_id, role_salary) VALUES (?, ?, ?)`, [data.whatRole, data.whatSalary, data.whatDepartment], function (err, results) 
     {
       if (err) throw err;
       console.table(results);
@@ -148,8 +148,8 @@ function newEmployee() {
     },
     {
       type: "input",
-      message: "What is the department id of their role?",
-      name: "departmentId"
+      message: "What is the role id of their new role?",
+      name: "roleId"
     },
     {
       type: "input",
@@ -158,7 +158,7 @@ function newEmployee() {
     }
   ])
   .then((data) => {
-    db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [data.newEmpFirstName, data.newEmpLastName, data.newEmpRole, data.newEmpMgrRoleID], function (err, results) 
+    db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [data.whatFirstName, data.whatLastName, data.roleId, data.managerRoleId], function (err, results) 
     {
       if (err) throw err;
       console.table(results);
@@ -174,7 +174,7 @@ function editEmployeeRole() {
     {
       type: "input",
       message: "What is their role id?",
-      name: "curRoleId"
+      name: "theirRoleId"
     },
     {
       type: "input",
@@ -183,7 +183,7 @@ function editEmployeeRole() {
     }
   ])
   .then((data) => {
-    db.query(`UPDATE employees SET role_id = ? WHERE id = ?`, [data.updatedRole, data.employeeToUpdate], function (err, results) 
+    db.query(`UPDATE employees SET role_id = ? WHERE id = ?`, [data.theirRoleId, data.whatNewRole], function (err, results) 
     {
       if (err) throw err;
       console.table(results);
