@@ -123,7 +123,7 @@ function newRole() {
     }
   ])
   .then((data) => {
-    db.query(`INSERT INTO roles (role_title, department_id, role_salary) VALUES (?, ?, ?)`, [data.whatRole, data.whatSalary, data.whatDepartment], function (err, results) 
+    db.query(`INSERT INTO roles (role_title, department_id, role_salary) VALUES (?, ?, ?)`, [data.whatRole, data.whatDepartment, data.whatSalary], function (err, results)
     {
       if (err) throw err;
       console.table(results);
