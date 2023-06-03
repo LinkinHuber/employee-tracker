@@ -18,3 +18,34 @@ const db = mysql.createConnection(
   },
   console.log("Welcome...")
 )
+
+function init() {
+  inquirer.prompt([
+    {
+      type: "list",
+      message: "Choose a category you'd like to view:",
+      name: 'categories',
+      choices: [ "Departments", "Roles", "Employees", "Add New Department", "Add New Role", "Add New Employee", "Edit Existing Employee Role" ],
+    },
+  ])
+  .then((data) => {
+    switch(data.categories) {
+      case "Departments": allDepartments();
+      break;
+      case "Roles": allRoles();
+      break;
+      case "Employees": allEmployees();
+      break;
+      case "Add New Department": newDepartment();
+      break;
+      case "Add New Role": newRole();
+      break;
+      case "Add New Employee": newEmployee();
+      break;
+      case "Edit Existing Employee Role": editEmployeeRole();
+      break;
+    }
+  })
+}
+
+init();
