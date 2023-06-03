@@ -122,3 +122,60 @@ function newRole() {
     })
   })
 }
+
+function newEmployee() {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is their first name?",
+      name: "whatFirstName"
+    },
+    {
+      type: "input",
+      message: "What is their last name?",
+      name: "whatLastName"
+    },
+    {
+      type: "input",
+      message: "What is the department id of their role?",
+      name: "departmentId"
+    },
+    {
+      type: "input",
+      message: "What is the role id of their manager?",
+      name: "managerRoleId"
+    }
+  ])
+  .then((data) => {
+    db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`, [data.newEmpFirstName, data.newEmpLastName, data.newEmpRole, data.newEmpMgrRoleID], function (err, results) 
+    {
+      if (err) throw err;
+      console.table(results);
+      init();
+    })
+  })
+}
+
+
+function editEmployeeRole() {
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is their role id?",
+      name: "curRoleId"
+    },
+    {
+      type: "input",
+      message: "What role do you want to give them instead?",
+      name: "whatNewRole"
+    }
+  ])
+  .then((data) => {
+    db.query(`UPDATE employees SET role_id = ? WHERE id = ?`, [data.updatedRole, data.employeeToUpdate], function (err, results) 
+    {
+      if (err) throw err;
+      console.table(results);
+      init();
+    })
+  })
+}
