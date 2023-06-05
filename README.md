@@ -5,7 +5,7 @@
 * [Acceptance criteria](#acceptance-criteria)
 * [What was the goal of this project?](#what-was-the-goal-of-this-project)
 * [Link to demo video](#link-to-demo-video)
-* [Screenshot of webpage](#screenshot-of-webpage)
+* [Screenshots of webpage](#screenshots-of-webpage)
 * [Questions?](#questions)
 
 ## User story
@@ -38,7 +38,7 @@
 ## Link to demo video
 - https://watch.screencastify.com/v/E70aEGE83Z1Arzc2qPUc
 
-## Screenshot of webpage
+## Screenshots of webpage
 ![Screenshot of home page](./images/Screenshot%202023-06-03%20174148.png)
 ![Screenshot of home page](./images/Screenshot%202023-06-03%20174235.png)
 
